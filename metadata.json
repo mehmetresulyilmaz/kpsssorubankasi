@@ -1,6 +1,6 @@
 {
-  "name": "KPSS Soru Motoru",
-  "description": "Zamanlayıcılı, puan hesaplamalı, yapay zeka destekli soru üretimi ve detaylı konu analizli online KPSS sınav platformu.",
+  "name": "KPSS Soru Bankası",
+  "description": "Yapay zeka destekli online KPSS Soru Bankası ve deneme sınavı platformu. GY-GK, Mini denemeler, anlık puan hesaplama ve kişiselleştirilmiş ders analizi.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
