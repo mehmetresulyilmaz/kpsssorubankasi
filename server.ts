@@ -353,7 +353,7 @@ Make sure they are highly educational, representing core curriculum subjects or 
 
     res.json(questionsWithIds);
   } catch (error) {
-    console.error("Gemini question generation error", error);
+    console.warn("Gemini question generation is temporarily unavailable or out of quota. Falling back gracefully to seed bank.", error);
     // Fallback to dynamic questions from DB bank
     console.log("Falling back to local question bank due to error.");
     res.json(getQuestionsFromBank(countNum, selectedCategory));
@@ -492,7 +492,7 @@ Do not return markdown except the JSON array.`;
           console.log(`Successfully added ${questionsWithIds.length} new weekly current events questions.`);
         }
       } catch (err) {
-        console.error("Failed to fetch weekly current events from Gemini. Using high-quality seeded fallbacks.", err);
+        console.warn("Failed to fetch weekly current events from Gemini due to rate limits or quota. Using high-quality seeded fallbacks.", err);
         // Fallback seeded current events
         const fallbacks = [
           {
@@ -798,7 +798,7 @@ Döndüreceğin JSON şeması tam olarak şu şekilde olmalıdır:
     });
 
   } catch (error) {
-    console.error("Gemini analysis error, sending static fallback report:", error);
+    console.warn("Gemini performance analysis is temporarily unavailable or out of quota. Sending static fallback report:", error);
     const fallbackReport = {
       overallSummary: "Sınav sonuçlarınıza göre eksik olduğunuz konular listelenmiştir. Düzenli konu tekrarları ve bol soru çözümüyle başarı grafiğinizi yükseltebilirsiniz.",
       weakSubjects: weakSubjectsList.slice(0, 5),
@@ -834,7 +834,7 @@ async function startServer() {
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
     // Check and trigger weekly updates on startup
-    checkAndApplyWeeklyUpdates().catch(err => console.error("Error running weekly update check on startup:", err));
+    checkAndApplyWeeklyUpdates().catch(err => console.warn("Notice: Weekly update check completed with fallback.", err));
   });
 }
 

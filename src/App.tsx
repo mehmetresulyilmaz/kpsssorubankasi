@@ -357,23 +357,47 @@ export default function App() {
         )}
       </main>
 
-      {/* Footer Bar: Current Events Ticker */}
-      <footer className="bg-white border-t border-stone-200 h-10 flex items-center justify-between overflow-hidden shrink-0 fixed bottom-0 left-0 right-0 z-40 select-none">
-        <div className="flex items-center flex-1 min-w-0 h-full overflow-hidden">
-          <div className="bg-slate-900 h-full flex items-center px-4 shrink-0 z-10">
+      {/* Footer Bar: Current Events Ticker & Branding Sub-Footer */}
+      <footer className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-stone-200/80 flex flex-col select-none shadow-[0_-4px_12px_rgba(0,0,0,0.015)]">
+        {/* Row 1: RSS Ticker */}
+        <div className="h-10 flex items-center overflow-hidden border-b border-stone-100">
+          <div className="bg-slate-950 h-full flex items-center px-4 shrink-0 z-10">
             <span className="text-stone-100 text-[10px] font-black uppercase tracking-wider font-mono">GÜNCEL BİLGİLER</span>
           </div>
-          <div className="flex-1 flex items-center whitespace-nowrap overflow-hidden italic text-[11px] text-slate-500 gap-12 pl-6 animate-pulse">
-            <span>• UNESCO Dünya Mirası Listesi'ne Türkiye'den yeni eklenen eser: Gordion Antik Kenti (2023).</span>
-            <span>• 2024 Avrupa Futbol Şampiyonası ev sahibi: Almanya.</span>
-            <span>• Türkiye's yerli otomobili Togg'un ilk seri üretim modeli: T10X.</span>
-            <span>• Nobel Barış Ödülü 2023 sahibi: Nergis Muhammedi.</span>
-            <span>• 2026 yılı Kültür Turizm Bakanlığı KPSS Genel Kültür Güncel Gelişmeler test müfredatı aktiftir.</span>
+          <div className="flex-1 overflow-hidden relative flex items-center h-full bg-white">
+            <div className="animate-ticker italic text-[11px] text-slate-500 font-medium pl-4">
+              <span>• UNESCO Dünya Mirası Listesi'ne Türkiye'den yeni eklenen eser: Gordion Antik Kenti (2023).</span>
+              <span>• 2024 Avrupa Futbol Şampiyonası ev sahibi: Almanya.</span>
+              <span>• Türkiye'nin yerli otomobili Togg'un ilk seri üretim modeli: T10X.</span>
+              <span>• Nobel Barış Ödülü 2023 sahibi: Nergis Muhammedi.</span>
+              <span>• 2026 yılı Kültür Turizm Bakanlığı KPSS Genel Kültür Güncel Gelişmeler test müfredatı aktiftir.</span>
+              {/* Duplicate list for seamless infinite looping */}
+              <span>• UNESCO Dünya Mirası Listesi'ne Türkiye'den yeni eklenen eser: Gordion Antik Kenti (2023).</span>
+              <span>• 2024 Avrupa Futbol Şampiyonası ev sahibi: Almanya.</span>
+              <span>• Türkiye'nin yerli otomobili Togg'un ilk seri üretim modeli: T10X.</span>
+              <span>• Nobel Barış Ödülü 2023 sahibi: Nergis Muhammedi.</span>
+              <span>• 2026 yılı Kültür Turizm Bakanlığı KPSS Genel Kültür Güncel Gelişmeler test müfredatı aktiftir.</span>
+            </div>
           </div>
         </div>
-        <div className="h-full px-5 bg-stone-50 border-l border-stone-200/80 flex items-center gap-1.5 shrink-0 text-xs font-semibold text-slate-600 font-mono">
-          <Sparkles className="h-3.5 w-3.5 text-amber-500 animate-pulse shrink-0" />
-          <span>Sınav Küratörü: <span className="font-black text-slate-900">Mehmet Resul Yılmaz</span></span>
+
+        {/* Row 2: Branding & Status Bar */}
+        <div className="h-8 bg-stone-50 px-4 flex items-center justify-between text-[10px] font-semibold text-slate-500 font-mono">
+          <div className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>KPSS Soru Bankası Canlı Sistem</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <Sparkles className="h-3 w-3 text-amber-500 animate-pulse shrink-0" />
+            <a 
+              href="https://fuzulimedya.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-slate-950 transition-colors flex items-center gap-0.5 text-slate-600"
+            >
+              Created by <span className="font-bold text-slate-950 underline decoration-stone-300 hover:decoration-slate-950 underline-offset-2">fuzuli medya</span>
+            </a>
+          </div>
         </div>
       </footer>
     </div>
