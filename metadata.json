@@ -1,0 +1,6 @@
+{
+  "name": "KPSS Soru Motoru",
+  "description": "Zamanlayıcılı, puan hesaplamalı, yapay zeka destekli soru üretimi ve detaylı konu analizli online KPSS sınav platformu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
