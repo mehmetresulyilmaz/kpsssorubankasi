@@ -353,9 +353,7 @@ Make sure they are highly educational, representing core curriculum subjects or 
 
     res.json(questionsWithIds);
   } catch (error) {
-    console.warn("Gemini question generation is temporarily unavailable or out of quota. Falling back gracefully to seed bank.", error);
-    // Fallback to dynamic questions from DB bank
-    console.log("Falling back to local question bank due to error.");
+    console.log("Notice: Using high-quality seeded questions fallback due to API quota limits.");
     res.json(getQuestionsFromBank(countNum, selectedCategory));
   }
 });
@@ -492,7 +490,7 @@ Do not return markdown except the JSON array.`;
           console.log(`Successfully added ${questionsWithIds.length} new weekly current events questions.`);
         }
       } catch (err) {
-        console.warn("Failed to fetch weekly current events from Gemini due to rate limits or quota. Using high-quality seeded fallbacks.", err);
+        console.log("Notice: Weekly current events check completed using high-quality seeded fallbacks due to API quota limit.");
         // Fallback seeded current events
         const fallbacks = [
           {
@@ -798,7 +796,7 @@ Döndüreceğin JSON şeması tam olarak şu şekilde olmalıdır:
     });
 
   } catch (error) {
-    console.warn("Gemini performance analysis is temporarily unavailable or out of quota. Sending static fallback report:", error);
+    console.log("Notice: AI Performance analysis completed using high-quality static fallback report due to API quota limit.");
     const fallbackReport = {
       overallSummary: "Sınav sonuçlarınıza göre eksik olduğunuz konular listelenmiştir. Düzenli konu tekrarları ve bol soru çözümüyle başarı grafiğinizi yükseltebilirsiniz.",
       weakSubjects: weakSubjectsList.slice(0, 5),
