@@ -106,7 +106,7 @@ export default function Login({ onLoginSuccess }: LoginProps) {
                 type="text"
                 required
                 autoFocus
-                placeholder="Örn: Mehmet Resul Yılmaz"
+                placeholder="Adınız ve Soyadınız"
                 value={username}
                 onChange={(e) => {
                   setUsername(e.target.value);
