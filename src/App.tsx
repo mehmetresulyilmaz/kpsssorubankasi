@@ -17,7 +17,28 @@ import {
   ArrowLeft 
 } from "lucide-react";
 
+const ALL_RSS_ITEMS = [
+  "UNESCO Dünya Mirası Listesi'ne Türkiye'den yeni eklenen eser: Gordion Antik Kenti (2023).",
+  "2024 Avrupa Futbol Şampiyonası ev sahibi: Almanya.",
+  "Türkiye'nin yerli otomobili Togg'un ilk seri üretim modeli: T10X.",
+  "Nobel Barış Ödülü 2023 sahibi: Nergis Muhammedi.",
+  "2026 yılı Kültür Turizm Bakanlığı KPSS Genel Kültür Güncel Gelişmeler test müfredatı aktiftir.",
+  "Türkiye'nin ilk astronotu Alper Gezeravcı, Ax-3 misyonu ile uzay yolculuğunu başarıyla tamamladı.",
+  "2024 yılı Türk Dünyası Kültür Başkenti olarak Azerbaycan'ın Şuşa şehri seçilmiştir.",
+  "UNESCO 2024 yılını Divanü Lugati't-Türk'ün yazılışının 950. yılı anma yılı ilan etmiştir.",
+  "Türkiye'nin ilk yerli ve milli haberleşme uydusu Türksat 6A, SpaceX Falcon 9 ile uzaya fırlatıldı.",
+  "2024 Paris Yaz Olimpiyatları'nda Yusuf Dikeç'in eli cebinde yaptığı atış dünya çapında viral oldu.",
+  "Dünyanın en derin ikinci kanyonu olan Valla Kanyonu Kastamonu sınırları içerisinde yer almaktadır.",
+  "Şairler Şairi olarak bilinen ve 'Çile' eserinin yazarı ünlü şairimiz Necip Fazıl Kısakürek'tir.",
+  "Türk tarihinin ilk yazılı belgeleri kabul edilen Orhun Abideleri günümüzde Moğolistan sınırlarında yer alır.",
+  "İstiklal Marşımızın ilk kez yayınlandığı gazete Açık Söz, ilk kez yayınlandığı dergi ise Sebilürreşad'dır.",
+  "Cumhuriyet tarihinin ilk kadın bakanı Türkan Akyol, ilk kadın başbakanı ise Tansu Çiller'dir."
+];
+
 export default function App() {
+  const [tickerItems] = useState(() => {
+    return [...ALL_RSS_ITEMS].sort(() => 0.5 - Math.random()).slice(0, 8);
+  });
   const [user, setUser] = useState<{ id: string; username: string; email: string } | null>(null);
   const [sessions, setSessions] = useState<ExamSession[]>([]);
   const [loading, setLoading] = useState(true);
@@ -366,17 +387,13 @@ export default function App() {
           </div>
           <div className="flex-1 overflow-hidden relative flex items-center h-full bg-white">
             <div className="animate-ticker italic text-[11px] text-slate-500 font-medium pl-4">
-              <span>• UNESCO Dünya Mirası Listesi'ne Türkiye'den yeni eklenen eser: Gordion Antik Kenti (2023).</span>
-              <span>• 2024 Avrupa Futbol Şampiyonası ev sahibi: Almanya.</span>
-              <span>• Türkiye'nin yerli otomobili Togg'un ilk seri üretim modeli: T10X.</span>
-              <span>• Nobel Barış Ödülü 2023 sahibi: Nergis Muhammedi.</span>
-              <span>• 2026 yılı Kültür Turizm Bakanlığı KPSS Genel Kültür Güncel Gelişmeler test müfredatı aktiftir.</span>
+              {tickerItems.map((item, idx) => (
+                <span key={`orig-${idx}`}>• {item}</span>
+              ))}
               {/* Duplicate list for seamless infinite looping */}
-              <span>• UNESCO Dünya Mirası Listesi'ne Türkiye'den yeni eklenen eser: Gordion Antik Kenti (2023).</span>
-              <span>• 2024 Avrupa Futbol Şampiyonası ev sahibi: Almanya.</span>
-              <span>• Türkiye'nin yerli otomobili Togg'un ilk seri üretim modeli: T10X.</span>
-              <span>• Nobel Barış Ödülü 2023 sahibi: Nergis Muhammedi.</span>
-              <span>• 2026 yılı Kültür Turizm Bakanlığı KPSS Genel Kültür Güncel Gelişmeler test müfredatı aktiftir.</span>
+              {tickerItems.map((item, idx) => (
+                <span key={`dup-${idx}`}>• {item}</span>
+              ))}
             </div>
           </div>
         </div>
